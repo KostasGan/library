@@ -1,19 +1,41 @@
 <html>
 <head>
+	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 
 <body>
-	<div class="header">			
-		<img src="../assets/logo3.png" height="150px" weight="150px">
-		<h> Open Library</h>	
+	<div class="header">	
+		<a href="#"> <img src="../assets/logo3.png"></a>		
+		<span class="header_title"> Open Library</span>	
+	</div>
+	<div class="selection_border">
+		<span class="selection-title"> Αναζήτηση βιβλίου</span>
+		<div class="selections">
+			<div>
+				<p>1.Επιλέξτε τρόπο αναζήτησης:</p>
+				<select class="search-selection">
+					<option id="title">Αναζήτηση με βάση τίτλο</option>
+					<option id="keyword">Αναζήτηση με βάση λέξη κλειδί</option>
+				</select>
+			</div>	
+			<div>
+				<p>2.Επιλέξτε βιβλία με βάση τον τίτλο:</p>
+				<select class="selectbytitle"> 
+					<option id="title">Αναζήτηση με βάση τίτλο</option>
+					<option id="keyword">Αναζήτηση με βάση λέξη κλειδί</option>
+				</select>
+			</div>
+			<div>
+				<p>2.Εισάγετε μια λέξη κλειδί:</p>	
+				<form>
+					<input type="text" placeholder="Εισάγετε μια λέξη κλειδί"> </input>
+					<button type="submit">Αναζήτηση</button>
+				</form>
+			</div>		
+		</div>
 	</div>
 
-
-
-
-
 </body>
-
 
 </html>
