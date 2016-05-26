@@ -13,8 +13,8 @@ select{
 	background-color: white;
 }
 form{
-
 	margin-left: 25px;
+
 
 }
 button{
@@ -68,6 +68,9 @@ p{
 	padding-left: 25px;
 	padding-bottom: 5px;
 	padding-top: 5px;
+}
+.formForKeyword{
+	display: none;
 }
 
 
