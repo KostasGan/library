@@ -72,6 +72,10 @@ p{
 .formForKeyword{
 	display: none;
 }
-
-
+.books{
+	margin-left: 50%;
+	margin-top: -25%;
+	box-sizing: border-box;
+	border: 1px solid;
+}
 
