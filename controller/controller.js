@@ -1,5 +1,5 @@
-function test () {
-	var url = "../../model/db_connection.php";
+function test(){
+	var url = "../../controller/getAllTitles.php";
 
 	var http = new XMLHttpRequest();
 
@@ -8,7 +8,6 @@ function test () {
 			console.log(http.responseText);
 		}
 	}
-	
 	http.open("GET",url,true);
 	http.send();
 }
