@@ -6,33 +6,33 @@ class Database{
 		$serverName='localhost';
 		$username='root';
 		$password='';
-		$dbname= 'test1';
+		$dbname= 'test';
 
 		$conn = new mysqli($serverName,$username,$password,$dbname);
 
-		if(mysqli_connect_errno()){
-			printf("Connect failed: %s\n", mysqli_connect_error());
+		if($conn->connect_errno){
+			printf("Connect failed: %s\n", $conn->connect_errno);
 			exit();
 		}
+
+		$conn->set_charset("utf8");
+
 		return $conn;
 	}
 
 	public function data_selection($conn,$query)
 	{
-		$results= $conn->query($query) or die("Error in data selection". mysql_error($conn));
-		return "all good";
-		if(mysql_num_rows($results) > 0 ){
+		$results= mysqli_query($conn,$query) or die("Error in data selection". $conn->connect_errno);	
+		
+		if($results->num_rows > 0 ){
 
-			/*$emparray = array();
-    		while($row =mysqli_fetch_assoc($result))
+			$emparray = array();
+    		while($row =$results->fetch_assoc())
     		{
         		$emparray[] = $row;
     		}
-    		return "Data:" . json_encode($emparray);*/
-    		return $results;
+    		echo json_encode($emparray, JSON_UNESCAPED_UNICODE);	
     	}
-    	return "yolo";
-
 	}
 
 	public function db_disconnection($conn)
