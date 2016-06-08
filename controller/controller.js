@@ -1,4 +1,4 @@
-function test(){
+function getAllTitles(){
 	var url = "../../controller/getAllTitles.php";
 
 	var http = new XMLHttpRequest();
@@ -7,11 +7,44 @@ function test(){
 		if(http.readyState == 4 && http.status == 200) {
 
 			if(http.responseText.length == 0){
-				alert('Δεν βρέθηκαν αποτελέσματα!')
+				alert('Δεν βρέθηκαν αποτελέσματα!');
+				return;
 			}
-			console.log(http.responseText);
+
+			var obj = JSON.parse(http.responseText);
+			
+			addSelectOptions(obj);
+
 		}
 	}
 	http.open("GET",url,true);
 	http.send();
+}
+
+function getBookByTitle(){
+	var url  = "../../controller/getBookByTitle.php";
+	var select = document.getElementById("selectbytitle");
+	var bookTitle = select.options[select.selectedIndex].text;
+
+	var http = new XMLHttpRequest();
+
+	http.onreadystatechange = function(){
+		if(http.readyState == 4 && http.status == 200) {
+
+			if(http.responseText.length == 0){
+				alert('Δεν βρέθηκαν αποτελέσματα!');
+				return;
+			}
+
+			var obj = JSON.parse(http.responseText);
+			
+			//addSelectOptions(obj);
+
+		}
+	}
+	http.open("POST",url+'?title='+bookTitle,true);
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	http.send();
+
+
 }
