@@ -31,7 +31,7 @@ class Database{
     		{
         		$emparray[] = $row;
     		}
-    		echo json_encode($emparray, JSON_UNESCAPED_UNICODE);	
+    		echo '{"books":'.json_encode($emparray, JSON_UNESCAPED_UNICODE).'}';	
     	}
 	}
 
@@ -40,7 +40,6 @@ class Database{
 		$conn->close();
 
 	}
-
 }
 
 ?>
