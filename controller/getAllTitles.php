@@ -1,5 +1,5 @@
 <?php
-require 'db_connection.php';
+require_once 'db_connection.php';
 
 $db = new Database();
 $query = "SELECT id, title FROM books";
