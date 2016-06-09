@@ -22,7 +22,7 @@ function getAllTitles(){
 }
 
 function getBookByTitle(){
-	var url  = "../../controller/getBookByTitle.php";
+	var url  = "../../controller/getBookByTitles.php";
 	var select = document.getElementById("selectbytitle");
 	var bookTitle = select.options[select.selectedIndex].text;
 
@@ -37,12 +37,13 @@ function getBookByTitle(){
 			}
 
 			var obj = JSON.parse(http.responseText);
+			console.log(obj);
 			
 			//addSelectOptions(obj);
 
 		}
 	}
-	http.open("POST",url+'?title='+bookTitle,true);
+	http.open("GET",url+'?title='+bookTitle,true);
 	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	http.send();
 
