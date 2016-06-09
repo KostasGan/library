@@ -14,9 +14,15 @@ function onSearchOptionChange(){
 
 function addSelectOptions(obj){
 	var select = document.getElementById('selectbytitle');
-	var option =document.createElement('option');
-	option.text= obj.books[1].title;
-	select.add(option);
+	
+	select.options[0].disabled=true;
+
+	for(i=0; i<obj.books.length; i++){
+
+		var option =document.createElement('option');
+		option.text= obj.books[i].title;
+		select.add(option);
+	}
 }
 
 function BookPresentation(books) {
