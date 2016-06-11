@@ -3,7 +3,8 @@
 require_once 'db_connection.php';
 
 $db = new Database();
-$title = $_GET['title'];
+$title = $_POST["title"];
+
 
 if(!isset($title) or empty($title)){
 	echo "Δεν έχετε επιλέξει τίτλο βιβλίου!";
