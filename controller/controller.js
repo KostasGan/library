@@ -43,9 +43,10 @@ function getBookByTitle(){
 
 		}
 	}
-	http.open("GET",url+'?title='+bookTitle,true);
+	
+	http.open("POST",url,true);
 	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	http.send();
+	http.send("title="+bookTitle);
 
 
 }
