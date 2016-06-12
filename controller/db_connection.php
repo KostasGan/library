@@ -23,14 +23,13 @@ class Database{
 	public function data_selection($conn,$query)
 	{
 		$results= mysqli_query($conn,$query) or die("Error in data selection ". $conn->connect_errno);	
-		
+ 
 		if($results->num_rows > 0 ){
-			$emparray = array();
-    		while($row =$results->fetch_assoc())
-    		{
-        		$emparray[] = $row;
-    		}
-    		echo '{"books":'.json_encode($emparray, JSON_UNESCAPED_UNICODE).'}';	
+			require_once '../model/books.php';
+
+			$model = new Model();
+
+			$books = $model->JSONStringOutput($results);
     	}
 	}
 
