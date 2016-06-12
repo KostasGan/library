@@ -17,20 +17,20 @@
 				<div>
 					<p>1.Επιλέξτε τρόπο αναζήτησης:</p>
 					<select id="search-selection" class="search-selection" onchange=" onSearchOptionChange()">
-						<option value="title">Αναζήτηση με βάση τίτλο</option>
+						<option value="title" selected="selected">Αναζήτηση με βάση τίτλο</option>
 						<option value="keyword">Αναζήτηση με βάση λέξη κλειδί</option>
 					</select>
 				</div>	
 				<div id="TitleSelection">
 					<p>2.Επιλέξτε βιβλία με βάση τον τίτλο:</p>
 					<select method="post" id="selectbytitle" class="selectbytitle"  onchange="getBookByTitle()" > 
-						<option value="default" selected="" ></option>
+						<option value="default" selected="selected"></option>
 					</select>
 				</div>
 				<div id="formForKeyword"class="formForKeyword">
 					<p>2.Εισάγετε μια λέξη κλειδί:</p>	
 					<form>
-						<input type="text" placeholder="Εισάγετε μια λέξη κλειδί"required> </input>
+						<input method="post" type="text" placeholder="Εισάγετε μια λέξη κλειδί" onkeyup="getBookByKeyword(this.value)" required> </input>
 						<button type="submit">Αναζήτηση</button>
 					</form>
 				</div>		
