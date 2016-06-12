@@ -1,5 +1,5 @@
 <?php
-class Model(){
+class Model{
 
 	private $id="";
 	private $author="";
@@ -8,11 +8,6 @@ class Model(){
 	private $price=0;
 	private $publish_date="";
 	private $description="";
-
-	public function __contruct()
-	{
-		
-	}
 	
 	public function __contruct($id,$author,$title,$genre,$price,$publish_date,$description)
 	{
@@ -56,7 +51,7 @@ class Model(){
 		return $this->description;
 	}
 
-	public function JSONStringOutput($result)
+	public function JSONStringOutput($results)
 	{
 		$emparray = array();
     	while($row =$results->fetch_assoc())
@@ -65,8 +60,6 @@ class Model(){
     	}
     	echo '{"books":'.json_encode($emparray, JSON_UNESCAPED_UNICODE).'}';
 	}
-
-
 }
 
 ?>
