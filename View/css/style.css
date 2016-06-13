@@ -78,5 +78,9 @@ p{
 	box-sizing: border-box;
 	border: 1px solid;
 	display:none;
+	background-color: lightgrey;
 }
 
+.book_title{
+	
+}
