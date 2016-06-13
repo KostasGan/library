@@ -39,7 +39,7 @@ function getBookByTitle(){
 			var obj = JSON.parse(http.responseText);
 			console.log(obj);
 			
-			//addSelectOptions(obj);
+			BookPresentation(obj);
 
 		}
 	}
@@ -71,7 +71,7 @@ function getBookByKeyword(keyword){
 			var obj = JSON.parse(http.responseText);
 			console.log(obj);
 			
-			//addSelectOptions(obj);
+			BookPresentation(obj);
 		}
 	}
 	
