@@ -1,7 +1,9 @@
+//Functionality that open/hide search options depend users first selection, searc by title or by keyword
 function onSearchOptionChange(){
 	var elem = document.getElementById("search-selection");
 	var userOption = elem.options[elem.selectedIndex].value;
 
+	//if users selection is 'search by title' open corresponding search field.
 	if(userOption === 'title'){
 		document.getElementById("formForKeyword").style.display="none";
 		document.getElementById("TitleSelection").style.display="block";
@@ -12,39 +14,33 @@ function onSearchOptionChange(){
 	}
 }
 
+//Functionality that get a book's titles object and insert them to a <select> for user's selection
 function addSelectOptions(obj){
-	var select = document.getElementById('selectbytitle');
+	var select = document.getElementById('selectbytitle'); //find <select> which will contain titles.
 	
-	select.options[0].disabled=true;
+	select.options[0].disabled=true; // disable empty option of <select> so user cannot select it.
 
 	for(i=0; i<obj.books.length; i++){
 
-		var option =document.createElement('option');
-		option.text= obj.books[i].title;
-		select.add(option);
+		var option =document.createElement('option'); //create a new option for each book title.
+		option.text= obj.books[i].title; // add book title as option's text
+		select.add(option);	//add the available option to <select>
 	}
 }
 
-function BookPresentation(books) {
+function BooksInfoView(books) {
 	var text = "";
+
+	EmptyBooksList();
+
 	var books_div = document.getElementById('books');
+	
 	books_div.style.display='block';
-
-	if (books_div.hasChildNodes()) {
-		if (books_div.childNodes.length == 1 && books.books.length == 1 ) {
-			books_div.removeChild(books_div.childNodes[0]);
-		}
-		else{
-			for(j=0; j<books_div.childNodes.length; j++){
-				books_div.removeChild(books_div.childNodes[j]);
-			}
-		}		
-	};
-
 
 
 	for (i=0; i<books.books.length; i++) {
-		var new_book = document.createElement('div');
+		var new_book= document.createElement('div');
+		new_book.setAttribute('id',i);
 
 		var title = document.createElement('h1');
 		title.setAttribute('class','book_title');
@@ -81,4 +77,17 @@ function BookPresentation(books) {
 		books_div.appendChild(new_book);
 	};
 
+}
+//Functionality that clean book's info view from previous results.
+function EmptyBooksList() {
+	var books_div = document.getElementById('books'); // find element that contains results
+
+	//check if has available result and remove them.
+	if (books_div.hasChildNodes()) {
+		if (books_div.childNodes.length >= 1 ){
+			for(var j=0; j<books_div.childNodes.length; j++){
+				books_div.removeChild(books_div.childNodes[j]);
+			}
+		}		
+	}
 }
