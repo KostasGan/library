@@ -31,12 +31,14 @@
 					<p>2.Εισάγετε μια λέξη κλειδί:</p>	
 					<form>
 						<input method="post" type="text" placeholder="Εισάγετε μια λέξη κλειδί" onkeyup="getBookByKeyword(this.value)" required> </input>
-						<button type="submit">Αναζήτηση</button>
+						<div>
+							<p id="error"></p>
+						</div>
 					</form>
 				</div>		
 			</div>
 		</div>
-		<div id="books" class="books"> </div>
+		<div id="books" class="books"></div>
 	</body>
 
 </html>
