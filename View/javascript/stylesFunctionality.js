@@ -1,16 +1,19 @@
 //Functionality that open/hide search options depend users first selection, searc by title or by keyword
 function onSearchOptionChange(){
 	var elem = document.getElementById("search-selection");
+	var book_viw = document.getElementById("books");
 	var userOption = elem.options[elem.selectedIndex].value;
 
-	//if users selection is 'search by title' open corresponding search field.
+	//if users selection is 'search by title' open corresponding search field and close book_view.
 	if(userOption === 'title'){
 		document.getElementById("formForKeyword").style.display="none";
 		document.getElementById("TitleSelection").style.display="block";
+		document.getElementById("books").style.display="none";
 	}
 	else{
 		document.getElementById("formForKeyword").style.display="block";
 		document.getElementById("TitleSelection").style.display="none";
+		document.getElementById("books").style.display="none";
 	}
 }
 
@@ -28,33 +31,40 @@ function addSelectOptions(obj){
 	}
 }
 
+
+//A function that get a book object,create elements and print books info to frontend.html
 function BooksInfoView(books) {
 	var text = "";
 
-	EmptyBooksList();
+	EmptyBooksList(); //make a second books clean up before new result print
 
-	var books_div = document.getElementById('books');
+	var books_div = document.getElementById('books'); //find element for books
 	
-	books_div.style.display='block';
+	books_div.style.display='block'; //make the element visible
 
 
+	//create books as many as the length of books that function get as parameter.
 	for (i=0; i<books.books.length; i++) {
 		var new_book= document.createElement('div');
 		new_book.setAttribute('id',i);
 
+		var img =document.createElement('img');
+		img.setAttribute('src', '../assets/book.jpg');
+		img.setAttribute('class','book_img');
+
 		var title = document.createElement('h1');
 		title.setAttribute('class','book_title');
-		text = document.createTextNode(books.books[i].title + " - " + books.books[i].publish_date);
+		text = document.createTextNode(books.books[i].title);
 		title.appendChild(text);
 
 		var author = document.createElement('p');
 		author.setAttribute('class','book_author');
-		text = document.createTextNode("Συγγραφέας: " + books.books[i].author);
+		text = document.createTextNode("Συγγραφέας: " + books.books[i].author + " / " + books.books[i].publish_date);
 		author.appendChild(text);
 
 		var price = document.createElement('p');
 		price.setAttribute('class','book_price');
-		text = document.createTextNode("Τιμή: " + books.books[i].price + " Euro");
+		text = document.createTextNode("Τιμή: " + books.books[i].price  + '\u20AC');
 		price.appendChild(text);
 
 		var genre = document.createElement('p');
@@ -67,12 +77,15 @@ function BooksInfoView(books) {
 		text = document.createTextNode("Περιγραφή: "+books.books[i].description);
 		description.appendChild(text);
 
+		var hr= document.createElement('hr');
+
+		new_book.appendChild(img);
 		new_book.appendChild(title);
 		new_book.appendChild(author);
-		new_book.appendChild(price);
 		new_book.appendChild(genre);
 		new_book.appendChild(description);
-
+		new_book.appendChild(price);
+		new_book.appendChild(hr);
 
 		books_div.appendChild(new_book);
 	};
