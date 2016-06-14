@@ -1,7 +1,6 @@
 
 //GetAllTitles used to get all availables books titles from server
 function getAllTitles(){
-
 	var url = "../../controller/getAllTitles.php"; //define url for server 
 													//file which send the books title 
 
@@ -59,6 +58,9 @@ function getBookByTitle(){
 			var books= JSON.parse(http.responseText);
 			console.log(books);
 
+			//function in 'controller.js'. Clean book's list from old results
+			EmptyBooksList(); 
+
 			//Function in 'controller.js' that get an object and print it in site.
 			BooksInfoView(books);
 		}
@@ -110,5 +112,5 @@ function getBookByKeyword(keyword){
 	
 	http.open("POST",url,true); //Open a asychronous("true" value define this)request to server url with POST
 	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Define necessary headers for server.
-	http.send("keyword="+keyword.trim()); // send user's keyword as parameter to server
+	http.send("keyword="+keyword.trim()); // send user's keyword without spaces as parameter to server
 }
