@@ -77,7 +77,7 @@ function getBookByKeyword(keyword){
 	//check user input if is empty and inform him to insert letter,numbers or symbols and break
 	if(keyword===""){
 		var books_div = document.getElementById('books').style.display="none"; //hide books view when there arent results.
-		alert("Εισάγετε κάποιο γράμμα για να ξεκινήσετε την αναζήτηση");
+		//alert("Εισάγετε κάποιο γράμμα για να ξεκινήσετε την αναζήτηση");
 		return;
 	}
 
@@ -95,8 +95,8 @@ function getBookByKeyword(keyword){
 		if(http.readyState == 4 && http.status == 200) {
 			//check if server respone books by keyword and If not alert a error message,clean book list and break function
 			if(http.responseText.length == 0 || http.responseText === "" ){
-				alert('Δεν βρέθηκαν αποτελέσματα βάση λέξης κλειδίου αναζήτησης'); 
 				var books_div = document.getElementById('books').style.display="none"; //hide books view when there arent results.
+				alert('Δεν βρέθηκαν αποτελέσματα βάση λέξης κλειδίου αναζήτησης'); 
 				return;
 			}
 			//server sent book's info as json encode response so parse JSON data to Object
