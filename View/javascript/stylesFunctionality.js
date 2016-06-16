@@ -59,7 +59,7 @@ function BooksInfoView(books) {
 
 		var author = document.createElement('p');
 		author.setAttribute('class','book_author');
-		text = document.createTextNode("Συγγραφέας: " + books.books[i].author + " / " + books.books[i].publish_date);
+		text = document.createTextNode('Συγγραφέας: ' + books.books[i].author + " / " + books.books[i].publish_date);
 		author.appendChild(text);
 
 		var price = document.createElement('p');
@@ -69,12 +69,12 @@ function BooksInfoView(books) {
 
 		var genre = document.createElement('p');
 		genre.setAttribute('class','book_genre');
-		text = document.createTextNode("Είδος Βιβλίου: " + books.books[i].genre);
+		text = document.createTextNode("Είδος Βιβλίου:  " + books.books[i].genre);
 		genre.appendChild(text);
 
 		var description = document.createElement('p');
 		description.setAttribute('class','book_description');
-		text = document.createTextNode("Περιγραφή: "+books.books[i].description);
+		text = document.createTextNode("Περιγραφή:  "+books.books[i].description);
 		description.appendChild(text);
 
 		var hr= document.createElement('hr');
